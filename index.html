@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+    <title>2048</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>2048</h1>
+        <h2>Play 2048 Game Online!</h2>
+        <div id="score-wrapper"><span id="score-text">SCORE</span>
+            <span id="score-number">0</span><span id="adding-score"></span></div>
+        <button class="new-game-button" onclick="init();">New Game</button>
+    </header>
+    <div id="grid-container">
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+    </div>
+    <div id="tile-container"></div>
+    <div id="gameover-mask">Game Over</div>
+    <footer>
+        Developed by Stillwtm.<br>
+        You can ⭐ <a href="https://github.com/Stillwtm">the Repo</a> if you're interested.
+    </footer>
+</body>
+
+</html>

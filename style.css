@@ -1,0 +1,282 @@
+:root {
+    /* 游戏区域的长宽 */
+    --playfield-length: 480px;
+    --cell-length: 100px;
+    --gap: 10px;
+}
+
+body {
+	font-family: Arial, "Microsoft Yahei" sans-serif;
+	background-color: rgba(240, 240, 210, 0.6);
+}
+
+header {
+    width: calc(var(--playfield-length) + 2 * var(--gap, 10px));
+    height: 20%;
+    margin: calc(0.03 * var(--playfield-length) + 0.06 * var(--gap, 10px) + 15px) auto;
+    color: #3e3a36;
+    display: grid;
+    grid: repeat(6) / repeat(6);
+}
+
+footer {
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    translate: -50%;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 4.5em;
+    margin: 0;
+    grid-row: 1 / 5;
+    grid-column: 1 / 4;
+}
+
+header h2 {
+    font-size: 1.5em;
+    margin: auto 0;
+    grid-row: 5;
+    grid-column: 1 / 4;
+}
+
+#score-wrapper {
+    display: flex;
+    width: calc(1.8 * var(--cell-length));
+    height: calc(0.55 * var(--cell-length));
+    background-color: #bbada0;
+    color: #eee4da;
+    margin: auto;
+    margin-right: 2%;
+    grid-row: 1 / 5;
+    grid-column: 4 / 7;
+    text-align: center;
+    border-radius: 5% / 15%;
+    line-height: calc(0.55 * var(--cell-length));
+}
+
+#score-wrapper #score-text {
+    margin: auto;
+    height: calc(0.55 * var(--cell-length));
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+#score-wrapper #score-number {
+    margin: auto;
+    margin-left: 0;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#adding-score {
+    opacity: 0;
+    position: absolute;
+    right: 27%;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #8f7a66;
+}
+
+.fade-out {
+    animation: fade-out 0.5s;
+}
+
+.new-game-button {
+    width: calc(1.3 * var(--cell-length));
+    height: calc(0.4 * var(--cell-length));
+    margin: auto;
+    margin-right: 2%;
+    grid-row: 4 / 6;
+    grid-column: 4 / 7;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5% / 15%;
+    color: white;
+    background-color: #8f7a66;
+}
+
+.new-game-button:hover {
+    background-color: #685f55;
+    cursor: pointer;
+}
+
+#grid-container {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    translate: -50% -50%;
+
+    width: var(--playfield-length, 480px);
+    height: var(--playfield-length, 480px);
+    padding: var(--gap, 10px);
+    border-radius: 3%;
+    background-color: #bbada0;
+
+    display: grid;
+    grid: repeat(4, 1fr) / repeat(4, 1fr);
+}
+
+#tile-container {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    translate: -50% -50%;
+
+    width: var(--playfield-length, 480px);
+    height: var(--playfield-length, 480px);
+    padding: var(--gap, 10px);
+    border-radius: 3%;
+    
+    display: grid;
+    grid: repeat(4, 1fr) / repeat(4, 1fr);    
+}
+
+#gameover-mask {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    translate: -50% -50%;
+
+    width: var(--playfield-length, 480px);
+    height: var(--playfield-length, 480px);
+    padding: var(--gap, 10px);
+    border-radius: 3%;
+    background-color: rgba(128, 128, 128, 0.6);
+    font-size: 4.5em;
+    font-weight: bold;
+    color: #3e3a36;
+    text-align: center;
+    line-height: var(--playfield-length, 480px);
+}
+
+.grid-cell {
+    width: var(--cell-length, 100px);
+    height: var(--cell-length, 100px);
+    margin: auto;
+    border-radius: 5%;
+    background-color: #cdc1b4;
+}
+
+.tile-base {
+    width: var(--cell-length, 100px);
+    height: var(--cell-length, 100px);
+    line-height: var(--cell-length, 100px);
+    text-align: center;
+    font-weight: bold;
+    margin: auto;
+    border-radius: 5%;
+}
+
+.tile-spawning {
+    animation: spawn 0.15s;
+}
+
+.tile-merging {
+    animation: merge 0.15s;
+}
+
+.tile-base.tile2 {
+    color: #776e65;
+    font-size: calc(0.6 * var(--cell-length, 100px));
+    background-color: #eee4da;
+}
+
+.tile-base.tile4 {
+    color: #776e65;
+    font-size: calc(0.6 * var(--cell-length, 100px));
+    background-color: #ede0c8;
+}
+
+.tile-base.tile8 {
+    color: white;
+    font-size: calc(0.6 * var(--cell-length, 100px));
+    background-color: #f2b179;
+}
+
+.tile-base.tile16 {
+    color: white;
+    font-size: calc(0.55 * var(--cell-length, 100px));
+    background-color: #f59563;
+}
+
+.tile-base.tile32 {
+    color: white;
+    font-size: calc(0.55 * var(--cell-length, 100px));
+    background-color: #f67c5f;
+}
+
+.tile-base.tile64 {
+    color: white;
+    font-size: calc(0.55 * var(--cell-length, 100px));
+    background-color: #f65e3b;
+}
+
+.tile-base.tile128 {
+    color: white;
+    font-size: calc(0.45 * var(--cell-length, 100px));
+    background-color: #e44d29;
+}
+
+.tile-base.tile256 {
+    color: white;
+    font-size: calc(0.45 * var(--cell-length, 100px));
+    background-color: #edcf72;
+}
+
+.tile-base.tile512 {
+    color: white;
+    font-size: calc(0.45 * var(--cell-length, 100px));
+    background-color: #c8a145;
+}
+
+.tile-base.tile1024 {
+    color: white;
+    font-size: calc(0.35 * var(--cell-length, 100px));
+    background-color: #a8832b;
+}
+
+.tile-base.tile2048 {
+    color: white;
+    font-size: calc(0.35 * var(--cell-length, 100px));
+    background-color: #86aa9c;
+}
+
+.tile-base.tile4096 {
+    color: white;
+    font-size: calc(0.35 * var(--cell-length, 100px));
+    background-color: #a6c;
+}
+
+.tile-base.tile8192 {
+    color: white;
+    font-size: calc(0.35 * var(--cell-length, 100px));
+    background-color: #791e6f;
+}
+
+/* tile生成动画 */
+@keyframes spawn {
+    0% { width: 0px; height: 0px; line-height: 0px; }
+    100% {
+        width: var(--cell-length, 100px);
+        height: var(--cell-length, 100px);
+        line-height: var(--cell-length, 100px);
+    }
+}
+
+/* tile合并动画 */
+@keyframes merge {
+    0% { width: 100%; height: 100%; }
+    50% { width: 110%; height: 110%; }
+    100% { width: 100%; height: 100%; }
+}
+
+/* 加分淡出动画 */
+@keyframes fade-out {
+    0% { opacity: 1; translate: 0 0; }
+    100% { opacity: 0; translate: 0 -80px; }
+}
