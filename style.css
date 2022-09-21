@@ -75,7 +75,7 @@ header h2 {
 #adding-score {
     opacity: 0;
     position: absolute;
-    right: 27%;
+    left: calc(50% + 0.5 * var(--playfield-length) - 20px);
     font-size: 1.8em;
     font-weight: bold;
     color: #8f7a66;
